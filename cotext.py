@@ -15,7 +15,7 @@ class File(object):
 
     def __exit__(self, type, value, traceback):
         print(f"Время окончания программы: {datetime.datetime.utcnow()}")
-        print(f"время работы программы: {time.time() - self.time}")
+        # print(f"время работы программы: {time.time() - self.time}")
         self.file_obj.close()
         
 
@@ -23,10 +23,12 @@ lines = ''
 with open('prince.txt', encoding='utf-8') as file:
     for line in file:
         lines = line.strip()
+        start_time = time.time()
           
 
 with File('request.txt', 'w') as opened_file:
     opened_file.write(lines)
+    print(f"working time {time.time() - start_time}")
 
 
 
